@@ -8,7 +8,7 @@
  */
 
 #include <iostream>
-#include "Stack2.h"
+#include "Stack.h"
 #include "Node.h"
 #include "Graph.h"
 
@@ -19,7 +19,8 @@ class Dijkstra
 private:
 	Graph* graph;
 	LinkedList<Node>* open;
-	Stack2<Node>* path;
+	Stack<Node>* path;
+	float dist;
 
 public:
 	Dijkstra(Graph* graph)
@@ -28,9 +29,14 @@ public:
 		open = new LinkedList<Node>();
 	}
 
-	Stack2<Node>* ReconstructPlan(Node* goal)
+	float getDistance()
 	{
-		Stack2<Node>* path = new Stack2<Node>(graph->GetNumberVertices());
+		return dist;
+	}
+
+	Stack<Node>* ReconstructPlan(Node* goal)
+	{
+		Stack<Node>* path = new Stack<Node>(graph->GetNumberVertices());
 		Node* current = goal;
 		while(current->parent != 0)
 		{
@@ -58,8 +64,9 @@ public:
 		return lowestNode;
 	}
 
-	Stack2<Node>* GetPath(Location* start, Location* goal)
+	Stack<Node>* GetPath(Location* start, Location* goal)
 	{
+	
 		Node* startNode = new Node(start);
 		Node* goalNode = new Node(goal);
 		open->Insert(startNode);
@@ -76,6 +83,7 @@ public:
 				if (adjNode->g == 0 || distance < adjNode->g)
 				{
 					adjNode->g = distance;
+					dist = distance;
 					adjNode->parent = current;
 				}
 				if (adjNode->location == goal)
