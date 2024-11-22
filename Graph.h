@@ -101,7 +101,12 @@ public:
 
 	void Display()
 	{
-		cout << "\tA\tB\tC\tD\tE\tF\tG\tH\tI" << endl;
+		for (int i = 0; i < size; i++)
+		{
+			cout << "\t " << vertices[i]->name;
+		}
+		cout << endl;
+		//cout << "\tA\tB\tC\tD\tE\tF\tG\tH\tI" << endl;
 		for (int i = 0; i < size; i++)
 		{
 			cout << vertices[i]->name << "\t";

@@ -15,7 +15,7 @@ class Location
 {
 public:
 	int key;
-	char name;
+	string name;
 	Location *next;
 	bool wasVisited;
 	float x;
@@ -26,7 +26,7 @@ public:
 		cout << name << endl;
 	}
 
-	Location(int key, char name)
+	Location(int key, string name)
 	{
 		this->key = key;
 		this->name = name;
@@ -34,7 +34,7 @@ public:
 		y = 0;
 	}
 
-	Location(int key, char name, float x, float y)
+	Location(int key, string name, float x, float y)
 	{
 		this->key = key;
 		this->name = name;
